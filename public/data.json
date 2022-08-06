@@ -1,0 +1,16 @@
+[{
+        "title": "Meet with Team",
+        "time": "6:00 PM",
+        "isDone": true
+    },
+    {
+        "title": "Meet with Client",
+        "time": "8:00 PM",
+        "isDone": true
+    },
+    {
+        "title": "Check Project Status",
+        "time": "8:00 PM",
+        "isDone": false
+    }
+]
