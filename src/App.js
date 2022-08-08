@@ -10,7 +10,7 @@ function App() {
   const [deletedCount, getDeletedCount] = useState(0);
 
   useEffect(() => {
-    fetch("http://localhost:5000/todos")
+    fetch("https://glacial-falls-22743.herokuapp.com/todos")
       .then((response) => response.json())
       .then((data) => setProjects(data));
   }, [addResult.acknowledged, deletedCount]);
@@ -27,13 +27,15 @@ function App() {
       isDone: false,
     };
 
-    fetch("http://localhost:5000/todos", {
+    fetch("https://glacial-falls-22743.herokuapp.com/todos", {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(task),
     })
       .then((response) => response.json())
-      .then((data) => setAddResult(data));
+      .then((data) => {
+        setAddResult(data);
+      });
   };
 
   return (

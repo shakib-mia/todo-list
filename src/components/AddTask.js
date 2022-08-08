@@ -11,6 +11,8 @@ const AddTask = ({ addTask, setName }) => {
         type="text"
         className="w-full p-2 rounded my-2"
         onChange={(e) => setName(e.target.value)}
+        placeholder="Add Task Here"
+        name
       />
 
       <div className="text-end mt-2">
