@@ -1,6 +1,6 @@
 import React from "react";
 
-const TodoList = ({ projects, completeItem, setDeletedCount }) => {
+const TodoList = ({ projects, setDeletedCount }) => {
   const deleteItem = (item) => {
     fetch(`http://localhost:5000/todos/${item}`, {
       method: "DELETE",
@@ -8,6 +8,21 @@ const TodoList = ({ projects, completeItem, setDeletedCount }) => {
       .then((res) => res.json())
       .then((data) => setDeletedCount(data.deletedCount));
   };
+
+  const completeItem = (item) => {
+    item.isDone = true;
+
+    fetch(`http://localhost:5000/todos/${item._id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(item),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
+  };
+
   return (
     <div id="todoList" className="pt-7 w-11/12 h-3/4 lg:h-1/2">
       <p className="text-center text-3xl text-white">Task List</p>
@@ -20,7 +35,7 @@ const TodoList = ({ projects, completeItem, setDeletedCount }) => {
                 className={`fa fa-check mr-2 ${
                   project.isDone ? "text-green-800" : "text-slate-400"
                 }`}
-                // onClick={() => completeItem(project.title)}
+                onClick={() => completeItem(project)}
               ></i>
               <i
                 className={`fa fa-trash ${

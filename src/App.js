@@ -24,6 +24,7 @@ function App() {
 
     const task = {
       title,
+      isDone: false,
     };
 
     fetch("http://localhost:5000/todos", {
